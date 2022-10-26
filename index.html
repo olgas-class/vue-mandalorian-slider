@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="card">
+          <h2 class="title">{{ movie.title }}</h2>
+          <div class="card-image">
+            <img
+              :src="movie.images[currentSlide]"
+              alt=""
+            />
+          </div>
+
+          <div class="thumbs-list">
+            <div
+                class="thumb"
+                :class="currentSlide === index ? 'active' : ''"
+                v-for="(image, index) in movie.images"
+                @click="showSlide(index)"
+            >
+                <img :src="image" alt="">
+            </div>
+          </div>
+
+          <div class="navigation">
+            <a @click.prevent="showPrev" class="left-navigation" href=""> &lArr; </a>
+            <a @click.prevent="showNext" class="right-navigation" href=""> &rArr; </a>
+          </div>
+
+          <div class="card-text">
+            <h4 class="category">Categoria: {{ movie.category }}</h4>
+            <p class="duration">Lunghezza: {{ movie.length }} min</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
